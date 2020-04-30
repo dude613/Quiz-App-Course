@@ -10,32 +10,19 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [
-    {
-        question: "q1",
-        choice1: "1",
-        choice2: "2",
-        choice3: "3",
-        choice4: "4",
-        answer: 1
-    },
-    {
-        question: "q2",
-        choice1: "1",
-        choice2: "2",
-        choice3: "3",
-        choice4: "4",
-        answer: 2
-    },
-    {
-        question: "q4",
-        choice1: "1",
-        choice2: "2",
-        choice3: "3",
-        choice4: "4",
-        answer: 4
-    },
-];
+let questions = [];
+
+fetch("questions.json")
+    .then(res => {
+        return res.json();
+    })
+    .then( loadedQuestions => {
+        questions = loadedQuestions;
+        startGame();
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
@@ -102,5 +89,3 @@ incrementScore = num => {
     score += num;
     scoreText.innerText = score;
 }
-
-startGame();

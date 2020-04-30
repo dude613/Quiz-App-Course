@@ -9,6 +9,6 @@
     margin-bottom: 0.5rem;
 }
 
-.high-scores:hover {
+.high-score:hover {
     transform: scale(1.025);
 }
